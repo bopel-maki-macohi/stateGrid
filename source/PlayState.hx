@@ -150,7 +150,7 @@ class PlayState extends FlxState
 			onPlayUpdate();
 	}
 
-	var playerSpeed:Float = 64;
+	var playerSpeed:Float = 32;
 
 	function onPlay() @:privateAccess
 	{
@@ -171,7 +171,7 @@ class PlayState extends FlxState
 		{
 			if (!tile.properties.exists)
 				continue;
-			
+
 			if (!player.overlaps(tile))
 				continue;
 
