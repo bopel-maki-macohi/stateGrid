@@ -139,6 +139,9 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
+		if (FlxG.keys.justPressed.ENTER && playing)
+			FlxG.switchState(() -> new PlayState());
+
 		if (FlxG.keys.justPressed.ENTER)
 		{
 			playing = true;
