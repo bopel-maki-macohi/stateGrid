@@ -8,33 +8,18 @@ import flixel.FlxState;
 class PlayState extends FlxState
 {
 	var tiles:FlxTypedSpriteGroup<Tile>;
-	var tileGrid:Map<Array<Int>, TileState> = [];
+	var tileGrid:Map<Array<Int>, Int> = new Map();
 
 	override public function create()
 	{
-		tileGrid.set([0,0], EMPTY);
-		tileGrid.set([0,1], EMPTY);
-		tileGrid.set([1,1], EMPTY);
-		tileGrid.set([2,1], EMPTY);
-		tileGrid.set([2,0], EMPTY);
-		tileGrid.set([3,0], EMPTY);
-		tileGrid.set([3,0], EMPTY);
-		tileGrid.set([4,0], EMPTY);
+		tileGrid.set([2, 2], EMPTY);
+
+		trace(tileGrid);
 
 		tiles = new FlxTypedSpriteGroup<Tile>();
 		add(tiles);
 
-		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2), function(tile)
-		{
-			var ix = Math.floor(tile.x / 64) - 2;
-			var iy = Math.floor(tile.y / 64) - 2;
-
-			for (position => state in tileGrid)
-			{
-				if (position == [ix, iy])
-					tile.setState(state);
-			}
-		});
+		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2));
 
 		super.create();
 	}
@@ -51,14 +36,19 @@ class PlayState extends FlxState
 				var tile = new Tile();
 				tile.setPosition((ix + ((offset != null) ? offset.x : 0)) * 64, (iy + ((offset != null) ? offset.y : 0)) * 64);
 
+				trace('${[ix, iy]} : ${tileGrid.get([ix,iy])}');
+
 				if (onTileMade != null)
 					onTileMade(tile);
 
-				if (tile != null && tile.exists && tile.properties?.exists)
-					tiles.add(tile);
+				if (tile != null)
+				{
+					if (tile.exists && tile.properties?.exists)
+						tiles.add(tile);
 
-				if (tile != null && tile.exists && !tile.properties?.exists)
-					tile.destroy();
+					if (tile.exists && !tile.properties?.exists)
+						tile.destroy();
+				}
 
 				ix++;
 			}

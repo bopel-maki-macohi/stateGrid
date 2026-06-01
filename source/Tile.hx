@@ -1,27 +1,29 @@
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
+import TileStates;
 
 class Tile extends FlxSprite
 {
-	public var state(default, null):Int = 0;
+	public var state(default, null):TileState = 0;
 
-	public function setState(state:TileStates)
+	public function setState(state:TileState)
 	{
 		properties = {
 			exists: true,
 			movable: true,
 		};
 
+		this.state = state;
+
 		switch (state)
 		{
 			case EMPTY:
 				properties.exists = false;
+				destroy();
 
 			case SOLID:
 				properties.movable = false;
 		}
-
-		this.state = state;
 	}
 
 	public var properties(default, null):TileProperties;
