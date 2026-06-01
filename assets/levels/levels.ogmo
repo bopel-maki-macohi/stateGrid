@@ -1,0 +1,34 @@
+{
+  "name": "State Grid Levels",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#000000ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 64, "y": 64},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 128, "y": 128},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "cd .. && lime test hl -debug",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "tile",
+      "name": "tiles",
+      "gridSize": {"x": 64, "y": 64},
+      "exportID": "32163469",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "New Tileset"
+    }
+  ],
+  "entities": [],
+  "tilesets": [
+    {"label": "Main", "path": "../tileset.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABACAYAAABr564eAAAAAXNSR0IArs4c6QAABCpJREFUeJzt3dtR5DAQhWFBbQTkQzoEBeFAPBCCeXIx5fVFttXdp6X/e9patnZaVutYtpmZp2mapjKwn6+P6BIABHmOLgAAohCAAIZFAAIYFgEIoLmX17fy8voWXcYhAhBAU4/Bpx6CBCCAZtYCTzkECUAA5lRDkAAUlOX+CXCGYk8TgGIy3T8Blr4/33d/rtbTBKCQbPdPgDWZQpAAFKHUFMBd35/vu0Go0u8EoACVZoCv+V5vz/d81UOQAAx21ARHlxPIaaTbHcohSAAGIvzGtDfv0YFgRTUECcAghJ8PtcvLmlqU6m1JMQQJwACEnw+1Xyk6U4NacLeiFoIEoBjCrw21e2xXX5sQtEUAOtubYKXwy7wDyVr3lt7GU4RCkAB0lCn81v6cgWK9R/NeM/eK47LkNV4C0EnG8Nv7O0WK91Zrj92IIajQ9wSggyzh1zPF47ysqWY3OFIIeoyVADTWS/ipLzzF43y1pkx90UJkCBKAhhQX5ZHoM/IVisf5bk0Z5+GOqPESgDhFbfH1GH41/1ZtHlqImC8C0IjiwqylXt9M8Ri3DqbRQnCL1VgJQAOKC/Ms9YWX8RhfrUt9LlryHisB6Eh1YW5RXXiq4RdVFyF4HQHYGM1oa9Twy3byvMtrvARgQ6qL8y6VEFQ9vl51qcxDtJZjJQBxm8fiG2mB78l8Ij3LI/AJQAc9NG3kOxQU3+I2U9qVjnaSaDFeArCREZovIgQJv3P/d299aN1zBKCxHnZ/jzxDUDn89qjWhf8RgMZ6OyMXpwWuHn7R8zrKLpD3AkOS5QLMHH6etUUfhx4QgI0cBUJPZ+WZRQiqh18WPfQbH4fVmR6a8oyz480Qfiq7v8jX9NDyg2T3EIAN1X6qb09B2OqhSIbw26NYX9Y+qz3JtDjmBGBjtZOStTnX3G3ELOHX05ypqgm/2u9RqUEAGhjxi26sHopkCL/oGnt5IhxxjAlAQ4Tgn61xKgdLjQw1ZhDVBwSgMULwz3KcWcIvw/xk3QUe3RO37oOnaZom01cQ9/P14fZaWe51tdDDZW9JFNIlWa1FZD2wA3Q00lceWnz6MfZl2gUqhF8hAP3VhKBas151tonVwi/bjioLlfArBGCM0e4Lwo9yMNec3L3rJwCD1PyqTA8hWNvQygt3Sb3Wtfqia67pZb4Wc0AjXBIfjTF6ca7p6ZhHH1/V8Cs8BfZ9CrxHuUlaWo5TdUxb86Faryr1viYARQKwJGiW0WQJa1UZ+plLYCE8HNGidBmZTc3DDoVjyg5QaAf4SO1pGVAjw67vETtAUUpNAtTIFn6FANS21SxqTQRkueRdIgDFLZtGsYkwtsy3a/5FF4Bjyg2EsWUOv8IOEIAV9fArBCAACxnCrxCAAO5QfN/xGQQggFsy/8I4D0EA3JYt+GbsAAEMiwAEMKxfXHpsFQTnV8IAAAAASUVORK5CYII=", "tileWidth": 64, "tileHeight": 64, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}

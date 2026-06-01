@@ -11,6 +11,8 @@ class Tile extends FlxSprite
 		properties = {
 			exists: true,
 			movable: true,
+			pusher: false,
+			end: false,
 		};
 
 		this.state = state;
@@ -23,6 +25,25 @@ class Tile extends FlxSprite
 
 			case SOLID:
 				properties.movable = false;
+
+			case PUSH_LEFT:
+				properties.pusher = true;
+				properties.push = LEFT;
+
+			case PUSH_DOWN:
+				properties.pusher = true;
+				properties.push = DOWN;
+
+			case PUSH_UP:
+				properties.pusher = true;
+				properties.push = UP;
+
+			case PUSH_RIGHT:
+				properties.pusher = true;
+				properties.push = RIGHT;
+
+			case FINISH:
+				properties.end = true;
 		}
 	}
 
@@ -32,7 +53,8 @@ class Tile extends FlxSprite
 	{
 		super();
 
-		makeGraphic(64, 64);
+		// loadGraphic('assets/tileset.png', true, 64, 64);
+		makeGraphic(64, 64, FlxColor.WHITE);
 		setState(SOLID);
 	}
 }
