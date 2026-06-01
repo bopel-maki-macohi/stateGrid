@@ -8,11 +8,12 @@ import flixel.FlxState;
 class PlayState extends FlxState
 {
 	var tiles:FlxTypedSpriteGroup<Tile>;
-	var tileGrid:Map<Array<Int>, Int> = new Map();
+	var tileGrid:Array<Array<TileState>> = [];
 
 	override public function create()
 	{
-		tileGrid.set([2, 2], EMPTY);
+		genTileGrid(FlxPoint.weak(16, 8));
+		setTile(FlxPoint.weak(), EMPTY);
 
 		trace(tileGrid);
 
@@ -22,6 +23,34 @@ class PlayState extends FlxState
 		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2));
 
 		super.create();
+	}
+
+	function setTile(position:FlxPoint, newtile:TileState)
+	{
+		tileGrid[Std.int(position.y)][Std.int(position.x)] = newtile;
+	}
+
+	function genTileGrid(dimensions:FlxPoint)
+	{
+		var ix = 0;
+		var iy = 0;
+		var fuckYouHaxe = [];
+
+		while (iy < dimensions.y)
+		{
+			while (ix < dimensions.x)
+			{
+				fuckYouHaxe.push(SOLID);
+
+				ix++;
+			}
+
+			tileGrid.push(fuckYouHaxe);
+			fuckYouHaxe = [];
+
+			ix = 0;
+			iy++;
+		}
 	}
 
 	function makeGrid(dimensions:FlxPoint, ?offset:FlxPoint, ?onTileMade:Tile->Void)
@@ -36,7 +65,7 @@ class PlayState extends FlxState
 				var tile = new Tile();
 				tile.setPosition((ix + ((offset != null) ? offset.x : 0)) * 64, (iy + ((offset != null) ? offset.y : 0)) * 64);
 
-				trace('${[ix, iy]} : ${tileGrid.get([ix,iy])}');
+				tile.setState(tileGrid[iy][ix] ?? SOLID);
 
 				if (onTileMade != null)
 					onTileMade(tile);
