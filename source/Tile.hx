@@ -51,6 +51,10 @@ class Tile extends FlxSprite
 			case FINISH:
 				properties.end = true;
 				properties.interactable = false;
+
+			case PLAYER:
+				properties.exists = false; // now it cant be used as a tile lol
+				properties.interactable = false;
 		}
 	}
 
@@ -72,7 +76,7 @@ class Tile extends FlxSprite
 		{
 			state++;
 
-			if (state == FINISH || (state.toInt() > FINISH.toInt()) || (state.toInt() < SOLID.toInt()))
+			if (state == FINISH || state == PLAYER || (state.toInt() > FINISH.toInt()) || (state.toInt() < SOLID.toInt()))
 				state = SOLID;
 
 			setState(state);

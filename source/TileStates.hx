@@ -11,6 +11,7 @@ enum abstract TileStates(Int) from Int to Int
 	var PUSH_RIGHT = 4;
 	
 	var FINISH = 5;
+	var PLAYER = 6;
 
 	public inline function new(int:Int)
 		this = int;
