@@ -57,7 +57,7 @@ class PlayState extends FlxState
 				if (tile != null && tile.exists && tile.properties.exists)
 					tiles.add(tile);
 
-				if (tile.exists && !tile.properties.exists)
+				if (tile != null && tile.exists && !tile.properties.exists)
 					tile.destroy();
 
 				ix++;
