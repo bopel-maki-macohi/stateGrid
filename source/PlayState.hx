@@ -1,5 +1,6 @@
 package;
 
+import TileStates;
 import flixel.math.FlxPoint;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.FlxState;
@@ -7,28 +8,48 @@ import flixel.FlxState;
 class PlayState extends FlxState
 {
 	var tiles:FlxTypedSpriteGroup<Tile>;
+	var tileGrid:Map<Array<Int>, TileState> = [];
 
 	override public function create()
 	{
+		tileGrid.set([0,0], EMPTY);
+		tileGrid.set([0,1], EMPTY);
+		tileGrid.set([1,1], EMPTY);
+		tileGrid.set([2,1], EMPTY);
+		tileGrid.set([2,0], EMPTY);
+		tileGrid.set([3,0], EMPTY);
+		tileGrid.set([3,0], EMPTY);
+		tileGrid.set([4,0], EMPTY);
+
 		tiles = new FlxTypedSpriteGroup<Tile>();
 		add(tiles);
 
 		/**
-		makeGrid(FlxPoint.weak(20, 12), null, function(tile:Tile)
-		{
-			tile.alpha = 0.25;
-			tile.scale.set(0.5, 0.5);
+			makeGrid(FlxPoint.weak(20, 12), null, function(tile:Tile)
+			{
+				tile.alpha = 0.25;
+				tile.scale.set(0.5, 0.5);
 
-			final ix = Math.floor(tile.x / 64);
-			final iy = Math.floor(tile.y / 64);
+				final ix = Math.floor(tile.x / 64);
+				final iy = Math.floor(tile.y / 64);
 
-			if (ix > 1 && ix < 17)
-				if (iy > 1 && iy < 10)
-					tile.destroy();
-		});
+				if (ix > 1 && ix < 17)
+					if (iy > 1 && iy < 10)
+						tile.destroy();
+			});
 		 */
 
-		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2));
+		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2), function(tile)
+		{
+			var ix = Math.floor(tile.x / 64);
+			var iy = Math.floor(tile.y / 64);
+
+			for (position => state in tileGrid)
+			{
+				if (position == [ix, iy])
+					tile.setState(state);
+			}
+		});
 
 		super.create();
 	}

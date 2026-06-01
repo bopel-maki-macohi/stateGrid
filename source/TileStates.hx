@@ -1,3 +1,5 @@
+typedef TileState = TileStates;
+
 enum abstract TileStates(Int) from Int to Int
 {
 	var EMPTY = 0;
