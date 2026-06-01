@@ -9,4 +9,6 @@ typedef TileProperties =
 	var ?push:FlxDirection;
 
 	var end:Bool;
+
+	var interactable:Bool;
 }

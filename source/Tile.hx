@@ -1,3 +1,4 @@
+import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import TileStates;
@@ -13,15 +14,20 @@ class Tile extends FlxSprite
 			movable: true,
 			pusher: false,
 			end: false,
+			interactable: true,
 		};
 
 		this.state = state;
+
+		animation.add('anim', [state]);
+		animation.play('anim');
 
 		switch (state)
 		{
 			case EMPTY:
 				properties.exists = false;
-				destroy();
+				properties.interactable = false;
+				visible = false;
 
 			case SOLID:
 				properties.movable = false;
@@ -44,6 +50,7 @@ class Tile extends FlxSprite
 
 			case FINISH:
 				properties.end = true;
+				properties.interactable = false;
 		}
 	}
 
@@ -53,8 +60,22 @@ class Tile extends FlxSprite
 	{
 		super();
 
-		// loadGraphic('assets/tileset.png', true, 64, 64);
-		makeGraphic(64, 64, FlxColor.WHITE);
+		loadGraphic('assets/tileset.png', true, 64, 64);
 		setState(SOLID);
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (FlxG.mouse.overlaps(this) && FlxG.mouse.justPressed && properties.interactable)
+		{
+			state++;
+
+			if (state == FINISH || (state.toInt() > FINISH.toInt()) || (state.toInt() < SOLID.toInt()))
+				state = SOLID;
+
+			setState(state);
+		}
 	}
 }

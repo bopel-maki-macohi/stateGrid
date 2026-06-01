@@ -4,6 +4,7 @@
   "height": 512,
   "offsetX": 0,
   "offsetY": 0,
+  "values": {"start_horizontal": false},
   "layers": [
     {
       "name": "tiles",

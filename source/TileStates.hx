@@ -17,4 +17,7 @@ enum abstract TileStates(Int) from Int to Int
 
 	public static inline function fromInt(int:Int):TileState
 		return new TileState(int);
+
+	public function toInt():Int
+		return this;
 }
