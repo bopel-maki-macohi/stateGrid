@@ -31,5 +31,6 @@ class Tile extends FlxSprite
 		super();
 
 		makeGraphic(64, 64);
+		setState(SOLID);
 	}
 }
