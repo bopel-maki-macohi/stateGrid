@@ -169,6 +169,9 @@ class PlayState extends FlxState
 	{
 		for (tile in tiles)
 		{
+			if (!tile.properties.exists)
+				continue;
+			
 			if (!player.overlaps(tile))
 				continue;
 
@@ -190,15 +193,15 @@ class PlayState extends FlxState
 					case LEFT:
 						player.velocity.set(-playerSpeed, 0);
 					case DOWN:
-						player.velocity.set(0, -playerSpeed);
-					case UP:
 						player.velocity.set(0, playerSpeed);
+					case UP:
+						player.velocity.set(0, -playerSpeed);
 					case RIGHT:
 						player.velocity.set(playerSpeed, 0);
 				}
 			}
 
-			if (!tile.properties.movable)
+			if (!tile.properties.movable || tile.properties.end)
 				player.velocity.set(0, 0);
 		}
 	}
