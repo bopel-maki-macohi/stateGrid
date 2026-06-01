@@ -26,8 +26,8 @@ class PlayState extends FlxState
 
 		makeGrid(FlxPoint.weak(16, 8), FlxPoint.weak(2, 2), function(tile)
 		{
-			var ix = Math.floor(tile.x / 64);
-			var iy = Math.floor(tile.y / 64);
+			var ix = Math.floor(tile.x / 64) - 2;
+			var iy = Math.floor(tile.y / 64) - 2;
 
 			for (position => state in tileGrid)
 			{
